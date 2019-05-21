@@ -299,7 +299,7 @@ void get_deep_mlp_ctx(Context& ctx, Tensor* input_0) {
     ctx.add(new RamTensor<uint8_t>(), "Relu/eightbit:0");
     ctx.add(new RamTensor<float>({1}), "Relu/eightbit:1");
     ctx.add(new RamTensor<float>({1}), "Relu/eightbit:2");
-    ctx.push(new ReluOp<uint8_t, float, uint8_t>(), 
+    ctx.push(new QuantizedReluOp<uint8_t, float, uint8_t>(), 
              { "zscore/eightbit/requantize:0", "zscore/eightbit/requantize:1", "zscore/eightbit/requantize:2" },
              { "Relu/eightbit:0", "Relu/eightbit:1", "Relu/eightbit:2" });
 }
@@ -353,7 +353,7 @@ void get_deep_mlp_ctx(Context& ctx, Tensor* input_0) {
     ctx.add(new RamTensor<uint8_t>(), "Relu_1/eightbit:0");
     ctx.add(new RamTensor<float>({1}), "Relu_1/eightbit:1");
     ctx.add(new RamTensor<float>({1}), "Relu_1/eightbit:2");
-    ctx.push(new ReluOp<uint8_t, float, uint8_t>(), 
+    ctx.push(new QuantizedReluOp<uint8_t, float, uint8_t>(), 
              { "zscore_1/eightbit/requantize:0", "zscore_1/eightbit/requantize:1", "zscore_1/eightbit/requantize:2" },
              { "Relu_1/eightbit:0", "Relu_1/eightbit:1", "Relu_1/eightbit:2" });
 }
